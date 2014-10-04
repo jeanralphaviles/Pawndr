@@ -1,21 +1,57 @@
-<!DOCTYPE html>
-<html ng-app="app">
-  <head>
-    <link rel="stylesheet" type="text/css" href="design.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js"></script>
-    <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-  </head>
-  <body>
-    <div data-ng-controller="Ctrlr1"> 
-      <h1 style="text-align: center;"> 
-        <p>Pawndr</p>
-        <img data-ng-src="{{image}}" style="height: 400px">
-      </h1>
-      <button id = 'bouton' data-ng-click="swipeRight()">right</button>
-    </div>
-    <span class = 'bottom'>
+html {
+	background: url(http://orangebackground.com/wp-content/uploads/2009/01/orange-background.jpg) center repeat-x;
 
-    </span>
-  </body>
-</html>
+}
+
+img {
+  position:relative;
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+p {
+  position: fixed;
+  text-align: center;
+  vertical-align: top;
+  font: 400 70px/1 'Amatic SC', Regular;
+  color: #000;
+  z-index: 1;
+}
+button {
+  z-index: 1;
+	position:fixed;
+	right:10px;
+	bottom:80px;
+	border-radius:6px;
+	font-family: 'Churli_Cute';
+	font-size:30px;
+	background-color: #FFD494;
+	text-decoration: none;
+	border:groove;
+	width: 90px;
+	height: 40px;
+}
+#bouton:hover {
+    border: none;
+    background:#FF6600;
+    box-shadow: 3px 5px 2px #777;
+    cursor: pointer;
+}
+
+
+.bottom {
+  z-index:0;
+	 position:absolute;
+    display: inline-block;
+    background:repeat-x;
+    bottom:-20;
+    vertical-align: bottom;
+    right:3px;
+    width: 1250px;
+    height:40px;
+    overflow:hidden;
+    background-color:#fbeeb8;
+    border-top-style:outset;
+}
