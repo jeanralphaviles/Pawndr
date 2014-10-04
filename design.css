@@ -1,0 +1,54 @@
+html {
+	background: url(http://orangebackground.com/wp-content/uploads/2009/01/orange-background.jpg) center repeat-x;
+
+}
+
+img {
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+p {
+  position: fixed;
+  text-align: center;
+  vertical-align: bottom;
+  width: 100%;
+  bottom:-10px;
+  font: 400 50px/1 'Amatic SC', Regular;
+  color: #000;
+}
+button {
+
+	position:fixed;
+	right:3px;
+	bottom:50px;
+	border-radius:6px;
+	font-family: 'Churli_Cute';
+	font-size:23px;
+	background-color: #FFD494;
+	text-decoration: none;
+	border:groove;
+	width: 60px;
+	height: 30px;
+}
+#bouton:hover {
+    border: none;
+    background:#FF6600;
+    box-shadow: 3px 5px 2px #777;
+    cursor: pointer;
+}
+
+
+.bottom {
+	position:absolute;
+    display: inline-block;
+    bottom:0;
+    vertical-align: bottom;
+    right:1px;
+    width: 30000px;
+    height:30px;
+    background-color:#fbeeb8;
+    border-top-style:outset;
+}
