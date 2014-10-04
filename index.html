@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html ng-app="app">
   <head>
+    <link rel="stylesheet" type="text/css" href="design.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body>
     <div data-ng-controller="Ctrlr1"> 
-      <h1 style="text-align: center;">
-        <img data-ng-src="{{image}}" style="height: 500px;">
+      <h1 style="text-align: center;"> 
+        <p>Pawndr</p>
+        <img data-ng-src="{{image}}" style="height: 400px">
       </h1>
-      <button data-ng-click="swipeRight()">Right!</button>
+      <button id = 'bouton' data-ng-click="swipeRight()">right</button>
     </div>
+    <span class = 'bottom'>
+
+    </span>
   </body>
 </html>
