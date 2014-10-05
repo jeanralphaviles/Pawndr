@@ -1,6 +1,5 @@
 html {
-	background: url(http://orangebackground.com/wp-content/uploads/2009/01/orange-background.jpg) center repeat-x;
-
+	background: url(http://orangebackground.com/wp-content/uploads/2009/01/orange-background.jpg) center repeat;
 }
 
 img {
@@ -39,7 +38,6 @@ button {
     box-shadow: 3px 5px 2px #777;
     cursor: pointer;
 }
-
 
 .bottom {
   z-index:0;

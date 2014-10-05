@@ -7,17 +7,15 @@ var fb = new Firebase("https://boiling-inferno-5821.firebaseio.com/Pawndr");
 var dataBuffer = '';
 var stats = [];
 
-app.get('/', function(req, res){
-    res.sendfile('index.html');
-});
-
 app.get('/reset', function(req, res){
     res.sendfile('reset.html');
 });
 
-app.get('/app.js', function(req, res){
-    res.sendfile('app.js');
+app.get('/report', function(req, res){
+    res.sendfile('report.html');
 });
+
+app.use('/', express.static(__dirname + '/'));
 
 app.use('/media', express.static(__dirname + '/media'));
 
@@ -31,9 +29,17 @@ io.on('connection', function(socket){
       });
       console.log(fb.child(data.index));
     });
+
+    socket.on('Left', function(data) {
+      console.log('Left!!');
+      fb.child(data.index).transaction(function(currVal) {
+        return currVal - 1;
+      });
+      console.log(fb.child(data.index));
+    });
 });
 
-var SerialPort = require("serialport").SerialPort
+var SerialPort = require("serialport").SerialPort;
 var serialPort = new SerialPort("/dev/ttyACM0", {
     baudrate: 9600
 });

@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script src="https://cdn.firebase.com/js/client/1.1.0/firebase.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js"></script>
+  </head>
+  <script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('Controller', ['$scope', function($scope) {
+      $scope.arr = [];
+      $scope.show = false;
+      var fb = new Firebase("https://boiling-inferno-5821.firebaseio.com/Pawndr");
+      $scope.init = function() {
+        fb.once('value', function(snap) {
+          snap.forEach(function(c) {
+            $scope.arr.push(c.val());
+          });
+        });
+      };
+      $scope.done = true;
+    }]);
+  </script>
+  <body ng-app="myApp">
+    <div ng-controller="Controller" ng-init="init()">
+      <button data-ng-click="show = true">Show report</button>
+      <div ng-repeat="a in arr track by $index" data-ng-if="show">
+        index: {{$index}}, {{arr[a]}}
+      </div>
+    </div>
+  </body>
+</html>

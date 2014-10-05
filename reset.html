@@ -1,10 +1,11 @@
 <html>
-  <head></head>
+  <head>
+    <script src="https://cdn.firebase.com/js/client/1.1.0/firebase.js"></script>
+  </head>
   <body>
     <script>
-      var fb = new Firebase("https:///boiling-inferno-5821.firebaseio.com"); 
-
-
+      var fb = new Firebase("https://boiling-inferno-5821.firebaseio.com/Pawndr"); 
+      fb.once('value', function(snap) {snap.forEach(function(c) {c.ref().set(0);});});
     </script>
   </body>
-<html>
+</html>

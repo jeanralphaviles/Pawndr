@@ -1,3 +1,4 @@
+
 var app = angular.module('app', []);
 
 app.controller('Ctrlr1', ['$scope', '$http', function($scope, $http) {
@@ -15,14 +16,20 @@ app.controller('Ctrlr1', ['$scope', '$http', function($scope, $http) {
       $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg';
     };
 
-    var shuffle = function(o){ //v1.0
+    var shuffle = function(o){
         for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
             return o;
     };
 
     $scope.swipeRight = function() {
-      // DB add
       $scope.socket.emit('Right', {index: $scope.indicies[$scope.index]});
+      ++$scope.index;
+      $scope.index %= $scope.size;
+      $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg';
+    };
+
+    $scope.swipeLeft = function() {
+      $scope.socket.emit('Left', {index: $scope.indicies[$scope.index]});
       ++$scope.index;
       $scope.index %= $scope.size;
       $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg';
