@@ -1,4 +1,3 @@
-
 var app = angular.module('app', []);
 
 app.controller('Ctrlr1', ['$scope', '$http', function($scope, $http) {
@@ -14,7 +13,7 @@ app.controller('Ctrlr1', ['$scope', '$http', function($scope, $http) {
         $scope.indicies.push(i);
       }
       shuffle($scope.indicies);
-      $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg';
+      $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg' + '?' + Math.random();
     };
 
     var shuffle = function(o){
@@ -23,25 +22,29 @@ app.controller('Ctrlr1', ['$scope', '$http', function($scope, $http) {
     };
 
     $scope.swipeRight = function() {
+      console.log('RIGHT!!');
       $scope.socket.emit('Right', {index: $scope.indicies[$scope.index]});
       ++$scope.index;
-      $scope.index %= $scope.size;
-      $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg';
+      $scope.index = $scope.index % $scope.size;
+      $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg' + '?' + Math.random();
+      $scope.$apply();
     };
 
     $scope.swipeLeft = function() {
+      console.log('LEFT!!');
       $scope.socket.emit('Left', {index: $scope.indicies[$scope.index]});
       ++$scope.index;
       $scope.index %= $scope.size;
-      $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg';
+      $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg' + '?' + Math.random();
+      $scope.$apply();
     };
 
     $scope.socket.on('update', function(data) {
-      $scope.score += data.change;
-      if ($score.score <= 0) {
+      $scope.score = $scope.score + data.change;
+      if ($scope.score <= 0) {
         $scope.swipeLeft();
-        $scope.scope = 50.0; 
-      } else {
+        $scope.score = 50.0; 
+      } else if ($scope.score >= 100) {
         $scope.swipeRight();
         $scope.score = 50.0;
       }

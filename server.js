@@ -23,19 +23,15 @@ io.on('connection', function(socket){
     console.log('a user connected');
 
     socket.on('Right', function(data) {
-      console.log('RIGHT!!');
       fb.child(data.index).transaction(function(currVal) {
         return currVal + 1;
       });
-      console.log(fb.child(data.index));
     });
 
     socket.on('Left', function(data) {
-      console.log('Left!!');
       fb.child(data.index).transaction(function(currVal) {
         return currVal - 1;
       });
-      console.log(fb.child(data.index));
     });
 });
 
@@ -45,13 +41,15 @@ var serialPort = new SerialPort("/dev/ttyACM0", {
 });
 
 var checkAction = function(stats) {
-  if (stats[0] > 100) {
+  if (stats[0] > 100 || (stats[1] === 0 && stats[2] === 0)) {
     return 'idk';
   }
-  if (stats[1] > 50) {
-    io.emit('update', {change: stats[1]/2});
+  if (stats[1] * stats[2] > 2000) {
+    io.sockets.emit('update', {change: (stats[1] * stats[2])/100});
+    return 'positive';
   } else {
-    io.emit('update', {change: (-100 + stats[1])/2});
+    io.sockets.emit('update', {change: -(stats[1] * stats[2])/100});
+    return 'negative';
   }
 };
 
@@ -64,6 +62,7 @@ serialPort.on("open", function () {
       stats = dataBuffer.substr(0, dataBuffer.length - 1).split(',');
       for (stat in stats) {stats[stat] = +stats[stat];}
       console.log(stats);
+      console.log(checkAction(stats));
       dataBuffer = '';
     }
   });
