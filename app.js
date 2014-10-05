@@ -7,6 +7,7 @@ app.controller('Ctrlr1', ['$scope', '$http', function($scope, $http) {
     $scope.index = 0;
     $scope.size = 22;
     $scope.socket = io();
+    $scope.score = 50.0;
 
     var init = function(size) {
       for (var i = 1; i <= size; ++i) {
@@ -34,6 +35,17 @@ app.controller('Ctrlr1', ['$scope', '$http', function($scope, $http) {
       $scope.index %= $scope.size;
       $scope.image = 'media/' + $scope.indicies[$scope.index] + '.jpg';
     };
+
+    $scope.socket.on('update', function(data) {
+      $scope.score += data.change;
+      if ($score.score <= 0) {
+        $scope.swipeLeft();
+        $scope.scope = 50.0; 
+      } else {
+        $scope.swipeRight();
+        $scope.score = 50.0;
+      }
+    });
 
     init(22);
 }]);

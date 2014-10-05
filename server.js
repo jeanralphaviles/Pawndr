@@ -49,9 +49,9 @@ var checkAction = function(stats) {
     return 'idk';
   }
   if (stats[1] > 50) {
-    return 'yes';
+    io.emit('update', {change: stats[1]/2});
   } else {
-    return 'no';
+    io.emit('update', {change: (-100 + stats[1])/2});
   }
 };
 
@@ -64,7 +64,6 @@ serialPort.on("open", function () {
       stats = dataBuffer.substr(0, dataBuffer.length - 1).split(',');
       for (stat in stats) {stats[stat] = +stats[stat];}
       console.log(stats);
-      console.log(checkAction(stats));
       dataBuffer = '';
     }
   });
