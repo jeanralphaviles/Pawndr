@@ -2,22 +2,16 @@ html {
 	background: url(http://orangebackground.com/wp-content/uploads/2009/01/orange-background.jpg) center repeat;
 }
 
-img {
+.polaroid img {
   position:relative;
   border: 10px solid #fff;
   border-bottom: 45px solid #fff;
   -webkit-box-shadow: 3px 3px 3px #777;
      -moz-box-shadow: 3px 3px 3px #777;
           box-shadow: 3px 3px 3px #777;
+
 }
-p {
-  position: fixed;
-  text-align: center;
-  vertical-align: top;
-  font: 400 70px/1 'Amatic SC', Regular;
-  color: #000;
-  z-index: 1;
-}
+
 button {
   z-index: 1;
 	position:fixed;
@@ -38,18 +32,43 @@ button {
     box-shadow: 3px 5px 2px #777;
     cursor: pointer;
 }
-
-.bottom {
-  z-index:0;
-	 position:absolute;
-    display: inline-block;
-    background:repeat-x;
-    bottom:-20;
-    vertical-align: bottom;
-    right:3px;
-    width: 1250px;
-    height:40px;
-    overflow:hidden;
-    background-color:#fbeeb8;
-    border-top-style:outset;
+#lbouton:hover {
+    border: none;
+    background:#FF6600;
+    box-shadow: 3px 5px 2px #777;
+    cursor: pointer;
 }
+
+.title {
+  position: fixed;
+  top: 60px;
+  left: 18px;
+  width:140px;
+  height:80px;
+  border-radius:20px;
+  border:double;
+  border-color: #fff3cd;
+  background-color: #ffc511;
+  ;
+}
+.special {
+  top:0px;
+  position:fixed;
+  font: 400 70px/1 'Amatic SC', Regular;
+  color: #000
+
+}
+
+form{
+  position:absolute;
+  bottom:2px;
+  right: 22px;
+
+}
+p.paypal{
+  font-size:12px;
+  position:absolute;
+  bottom:15px;
+  right: 15px;
+}
+
