@@ -44,11 +44,11 @@ var checkAction = function(stats) {
   if (stats[0] > 100 || (stats[1] === 0 && stats[2] === 0)) {
     return 'idk';
   }
-  if (stats[1] * stats[2] > 2000) {
-    io.sockets.emit('update', {change: (stats[1] * stats[2])/100});
+  if (stats[1] > stats[2]) {
+    io.sockets.emit('update', {change: (stats[1] - stats[2])});
     return 'positive';
   } else {
-    io.sockets.emit('update', {change: -(stats[1] * stats[2])/100});
+    io.sockets.emit('update', {change: (stats[1] - stats[2])});
     return 'negative';
   }
 };

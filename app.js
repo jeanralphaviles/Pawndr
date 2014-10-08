@@ -41,6 +41,7 @@ app.controller('Ctrlr1', ['$scope', '$http', function($scope, $http) {
 
     $scope.socket.on('update', function(data) {
       $scope.score = $scope.score + data.change;
+      console.log(data.change);
       if ($scope.score <= 0) {
         $scope.swipeLeft();
         $scope.score = 50.0; 
